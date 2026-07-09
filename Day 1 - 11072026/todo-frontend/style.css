@@ -1,0 +1,490 @@
+/* ============================================
+   RESET & BASE
+   ============================================ */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2rem 1rem;
+    position: relative;
+}
+
+/* Animated background particles effect */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+            radial-gradient(2px 2px at 20% 30%, rgba(255, 255, 255, 0.15), transparent),
+            radial-gradient(2px 2px at 40% 70%, rgba(255, 255, 255, 0.10), transparent),
+            radial-gradient(2px 2px at 60% 20%, rgba(255, 255, 255, 0.12), transparent),
+            radial-gradient(2px 2px at 80% 80%, rgba(255, 255, 255, 0.08), transparent),
+            radial-gradient(2px 2px at 10% 90%, rgba(255, 255, 255, 0.10), transparent),
+            radial-gradient(2px 2px at 90% 10%, rgba(255, 255, 255, 0.06), transparent);
+    background-size: 200px 200px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* ============================================
+   CONTAINER – glassmorphism
+   ============================================ */
+.container {
+    width: 100%;
+    max-width: 520px;
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    padding: 2rem 1.75rem;
+    border-radius: 28px;
+    box-shadow:
+            0 25px 60px rgba(0, 0, 0, 0.5),
+            inset 0 1px 0 rgba(255, 255, 255, 0.10);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    position: relative;
+    z-index: 1;
+    transition: box-shadow 0.4s ease;
+}
+
+.container:hover {
+    box-shadow:
+            0 35px 80px rgba(0, 0, 0, 0.6),
+            inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+/* ============================================
+   HEADINGS
+   ============================================ */
+.container h2 {
+    text-align: center;
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 1.75rem;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 50%, #4facfe 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+}
+
+.container h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #f093fb, #4facfe);
+    margin: 0.5rem auto 0;
+    border-radius: 4px;
+}
+
+/* ============================================
+   FORM GROUP
+   ============================================ */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ============================================
+   INPUTS
+   ============================================ */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    padding: 0.75rem 1.1rem;
+    background: rgba(255, 255, 255, 0.06);
+    border: 2px solid rgba(255, 255, 255, 0.10);
+    border-radius: 14px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #ffffff;
+    outline: none;
+    width: 100%;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    backdrop-filter: blur(4px);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #4facfe;
+    background: rgba(255, 255, 255, 0.10);
+    box-shadow: 0 0 0 4px rgba(79, 172, 254, 0.15), inset 0 0 20px rgba(79, 172, 254, 0.05);
+    transform: translateY(-1px);
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="password"]::placeholder {
+    color: rgba(255, 255, 255, 0.35);
+    font-weight: 400;
+}
+
+input[type="text"]:hover,
+input[type="email"]:hover,
+input[type="password"]:hover {
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* ============================================
+   BUTTONS – global
+   ============================================ */
+button {
+    padding: 0.75rem 1.25rem;
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    color: #fff;
+    border: none;
+    border-radius: 14px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    width: 100%;
+    margin-top: 0.5rem;
+    letter-spacing: 0.3px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(79, 172, 254, 0.25);
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+    transition: left 0.6s ease;
+}
+
+button:hover::before {
+    left: 100%;
+}
+
+button:hover {
+    transform: translateY(-2px) scale(1.01);
+    box-shadow: 0 12px 35px rgba(79, 172, 254, 0.35);
+}
+
+button:active {
+    transform: translateY(0px) scale(0.98);
+}
+
+/* ============================================
+   TODO CHECKBOX
+   ============================================ */
+.todo-checkbox {
+    width: 1.3rem;
+    height: 1.3rem;
+    accent-color: #4facfe;
+    border-radius: 6px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    margin-right: 0.75rem;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    vertical-align: middle;
+    flex-shrink: 0;
+    background: rgba(255, 255, 255, 0.05);
+    appearance: none;
+    -webkit-appearance: none;
+    position: relative;
+}
+
+.todo-checkbox:checked {
+    accent-color: #4facfe;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    border-color: #4facfe;
+}
+
+.todo-checkbox:checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.todo-checkbox:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(79, 172, 254, 0.25);
+    border-color: #4facfe;
+}
+
+.todo-checkbox:hover {
+    border-color: #4facfe;
+    transform: scale(1.08);
+}
+
+.todo-card .todo-checkbox {
+    margin-left: 0;
+    margin-right: 0.75rem;
+}
+
+/* ============================================
+   TODO CARDS
+   ============================================ */
+.todo-cards {
+    margin-top: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+}
+
+.todo-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 0.75rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation: slideIn 0.4s ease forwards;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px) scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.todo-card:hover {
+    background: rgba(255, 255, 255, 0.09);
+    border-color: rgba(79, 172, 254, 0.20);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+.todo-card span {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.90);
+    flex-grow: 1;
+    font-weight: 450;
+    padding: 0 0.25rem;
+}
+
+/* completed todo style */
+.todo-card span.completed {
+    text-decoration: line-through;
+    color: rgba(255, 255, 255, 0.35);
+}
+
+/* ============================================
+   TODO DELETE BUTTON
+   ============================================ */
+.todo-card button {
+    background: rgba(255, 77, 77, 0.15);
+    color: #ff6b6b;
+    border: 1px solid rgba(255, 77, 77, 0.15);
+    padding: 0.35rem 0.9rem;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.85rem;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    width: auto;
+    margin: 0;
+    box-shadow: none;
+    backdrop-filter: blur(4px);
+}
+
+.todo-card button::before {
+    display: none;
+}
+
+.todo-card button:hover {
+    background: #ff4d4d;
+    color: #fff;
+    transform: scale(1.05);
+    box-shadow: 0 8px 24px rgba(255, 77, 77, 0.30);
+    border-color: #ff4d4d;
+}
+
+.todo-card button:active {
+    transform: scale(0.92);
+}
+
+/* ============================================
+   ADD TODO ROW
+   ============================================ */
+.add-todo {
+    display: flex;
+    gap: 0.6rem;
+    margin-top: 1.75rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.add-todo input {
+    flex: 1;
+    padding: 0.7rem 1.1rem;
+    background: rgba(255, 255, 255, 0.06);
+    border: 2px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    font-size: 1rem;
+    color: #ffffff;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.add-todo input:focus {
+    border-color: #4facfe;
+    background: rgba(255, 255, 255, 0.09);
+    box-shadow: 0 0 0 4px rgba(79, 172, 254, 0.12);
+}
+
+.add-todo input::placeholder {
+    color: rgba(255, 255, 255, 0.30);
+}
+
+.add-todo button {
+    width: auto;
+    padding: 0.7rem 1.6rem;
+    margin-top: 0;
+    border-radius: 14px;
+    white-space: nowrap;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    box-shadow: 0 8px 24px rgba(245, 87, 108, 0.25);
+    font-weight: 600;
+}
+
+.add-todo button:hover {
+    box-shadow: 0 12px 35px rgba(245, 87, 108, 0.40);
+    transform: translateY(-2px) scale(1.02);
+}
+
+.add-todo button:active {
+    transform: scale(0.96);
+}
+
+/* ============================================
+   EMPTY MESSAGE
+   ============================================ */
+#empty-message {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.30);
+    font-style: italic;
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+    letter-spacing: 0.3px;
+    padding: 1rem 0;
+    border: 2px dashed rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+}
+
+#empty-message::before {
+    content: '📋 ';
+    display: block;
+    font-size: 1.8rem;
+    margin-bottom: 0.4rem;
+    opacity: 0.5;
+}
+
+/* ============================================
+   SCROLLBAR
+   ============================================ */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(79, 172, 254, 0.30);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(79, 172, 254, 0.50);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 480px) {
+    body {
+        padding: 1rem 0.75rem;
+        align-items: flex-start;
+    }
+
+    .container {
+        padding: 1.5rem 1rem;
+        border-radius: 20px;
+    }
+
+    .container h2 {
+        font-size: 1.4rem;
+    }
+
+    .add-todo {
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+
+    .add-todo button {
+        width: 100%;
+        padding: 0.75rem;
+    }
+
+    .todo-card {
+        padding: 0.6rem 0.8rem;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .todo-card span {
+        font-size: 0.9rem;
+        min-width: 0;
+        word-break: break-word;
+    }
+
+    .todo-card button {
+        padding: 0.3rem 0.7rem;
+        font-size: 0.75rem;
+    }
+
+    .todo-checkbox {
+        width: 1.1rem;
+        height: 1.1rem;
+        margin-right: 0.5rem;
+    }
+}
