@@ -28,7 +28,6 @@ public class StudentService {
 
     public Student updateStudent(Student student, Long id){
         Student old = getStudentById(id);
-
         old.setFirstName(student.getFirstName());
         old.setLastName(student.getLastName());
         old.setEmail(student.getEmail());
