@@ -1,0 +1,19 @@
+body{
+    background:#f5f5f5;
+}
+
+.card{
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card img{
+    border-radius:10px 10px 0 0;
+}
+
+h1{
+    font-weight:bold;
+}
